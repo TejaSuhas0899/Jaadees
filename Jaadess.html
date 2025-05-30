@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px Helvetica; color: #c7c8c9; -webkit-text-stroke: #c7c8c9; background-color: #1a1c1f}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px Helvetica; color: #c7c8c9; -webkit-text-stroke: #c7c8c9; background-color: #1a1c1f; min-height: 18.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px Helvetica; color: #1d88c6; -webkit-text-stroke: #1d88c6; background-color: #1a1c1f}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; color: #c7c8c9; -webkit-text-stroke: 0px #c7c8c9}
+    span.s3 {text-decoration: underline ; font-kerning: none; color: #1d88c6; -webkit-text-stroke: 0px #1d88c6}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;meta charset="UTF-8" /&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;title&gt;Jadees Homemade Foods&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;style&gt;</span></p>
+<p class="p1"><span class="s1">    body { font-family: Arial, sans-serif; padding: 20px; }</span></p>
+<p class="p1"><span class="s1">    .tab { display: none; margin-top: 20px; }</span></p>
+<p class="p1"><span class="s1">    .tab-buttons button { margin: 5px; }</span></p>
+<p class="p1"><span class="s1">  &lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;h1&gt;Jadees Homemade Foods&lt;/h1&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">  &lt;!-- Navigation Tabs --&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;div class="tab-buttons"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'home')"&gt;Home&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'login')"&gt;Login&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'signup')"&gt;Signup&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'products')"&gt;Products&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'profile')"&gt;Profile&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="logout()"&gt;Logout&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">  &lt;!-- Tabs --&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;div id="home" class="tab"&gt;&lt;h2&gt;Welcome to Jadees&lt;/h2&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">  &lt;div id="login" class="tab"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;h2&gt;Login&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;form id="loginForm"&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="email" id="login-email" placeholder="Email" required&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="password" id="login-password" placeholder="Password" required&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;button type="submit"&gt;Login&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/form&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;p id="login-message"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">  &lt;div id="signup" class="tab"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;h2&gt;Signup&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;form id="signupForm"&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="text" id="signup-username" placeholder="Username" required&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="email" id="signup-email" placeholder="Email" required&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="password" id="signup-password" placeholder="Password" required&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="text" id="signup-phone" placeholder="Phone" required&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="text" id="signup-address" placeholder="Address" required&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;button type="submit"&gt;Signup&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/form&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;p id="signup-message"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">  &lt;div id="products" class="tab"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;h2&gt;Products&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;div id="product-list"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;h3&gt;Cart&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;ul id="cart-items"&gt;&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="checkout()"&gt;Checkout via WhatsApp&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">  &lt;div id="profile" class="tab"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;h2&gt;Profile&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;div id="profile-details"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button onclick="editAddress()"&gt;Edit Address&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;div id="edit-address-form" style="display:none;"&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;input type="text" id="new-address" placeholder="Enter new address"&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;button onclick="saveNewAddress()"&gt;Save&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">  &lt;!-- JS Logic --&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;script&gt;</span></p>
+<p class="p1"><span class="s1">    const products = [</span></p>
+<p class="p1"><span class="s1">      { name: "Pickle", price: 150 },</span></p>
+<p class="p1"><span class="s1">      { name: "Fryums", price: 80 },</span></p>
+<p class="p1"><span class="s1">      { name: "Sweets", price: 120 },</span></p>
+<p class="p1"><span class="s1">    ];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    const productList = document.getElementById("product-list");</span></p>
+<p class="p1"><span class="s1">    const cartItems = document.getElementById("cart-items");</span></p>
+<p class="p1"><span class="s1">    let cart = [];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    let users = JSON.parse(localStorage.getItem("users")) || {};</span></p>
+<p class="p1"><span class="s1">    let loggedInUserEmail = localStorage.getItem("loggedInUser") || null;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function saveUsers() {</span></p>
+<p class="p1"><span class="s1">      localStorage.setItem("users", JSON.stringify(users));</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function openTab(evt, tabId) {</span></p>
+<p class="p1"><span class="s1">      document.querySelectorAll(".tab").forEach(tab =&gt; tab.style.display = "none");</span></p>
+<p class="p1"><span class="s1">      document.getElementById(tabId).style.display = "block";</span></p>
+<p class="p1"><span class="s1">      if (tabId === "products") renderProducts();</span></p>
+<p class="p1"><span class="s1">      if (tabId === "profile") displayProfileDetails();</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function renderProducts() {</span></p>
+<p class="p1"><span class="s1">      productList.innerHTML = "";</span></p>
+<p class="p1"><span class="s1">      products.forEach((product, index) =&gt; {</span></p>
+<p class="p1"><span class="s1">        const div = document.createElement("div");</span></p>
+<p class="p1"><span class="s1">        div.innerHTML = `${product.name} - ₹${product.price}</span></p>
+<p class="p1"><span class="s1">          &lt;button onclick="addToCart(${index})"&gt;Add&lt;/button&gt;`;</span></p>
+<p class="p1"><span class="s1">        productList.appendChild(div);</span></p>
+<p class="p1"><span class="s1">      });</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function addToCart(index) {</span></p>
+<p class="p1"><span class="s1">      cart.push(products[index]);</span></p>
+<p class="p1"><span class="s1">      updateCartDisplay();</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function updateCartDisplay() {</span></p>
+<p class="p1"><span class="s1">      cartItems.innerHTML = "";</span></p>
+<p class="p1"><span class="s1">      cart.forEach(item =&gt; {</span></p>
+<p class="p1"><span class="s1">        const li = document.createElement("li");</span></p>
+<p class="p1"><span class="s1">        li.textContent = `${item.name} - ₹${item.price}`;</span></p>
+<p class="p1"><span class="s1">        cartItems.appendChild(li);</span></p>
+<p class="p1"><span class="s1">      });</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function checkout() {</span></p>
+<p class="p1"><span class="s1">      if (!loggedInUserEmail) {</span></p>
+<p class="p1"><span class="s1">        alert("Please login first.");</span></p>
+<p class="p1"><span class="s1">        return;</span></p>
+<p class="p1"><span class="s1">      }</span></p>
+<p class="p1"><span class="s1">      const currentUserDetails = users[loggedInUserEmail];</span></p>
+<p class="p1"><span class="s1">      const username = currentUserDetails.username;</span></p>
+<p class="p1"><span class="s1">      const phoneNumber = currentUserDetails.phone || "Not provided";</span></p>
+<p class="p1"><span class="s1">      const address = currentUserDetails.address || "Not provided";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">      let whatsappMessage = `*Order from Jadees*%0A%0A`;</span></p>
+<p class="p1"><span class="s1">      cart.forEach(item =&gt; {</span></p>
+<p class="p1"><span class="s1">        whatsappMessage += `- ${item.name} - ₹${item.price}%0A`;</span></p>
+<p class="p1"><span class="s1">      });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">      const total = cart.reduce((sum, item) =&gt; sum + item.price, 0);</span></p>
+<p class="p1"><span class="s1">      whatsappMessage += `%0A*Total:* ₹${total}%0A%0A`;</span></p>
+<p class="p1"><span class="s1">      whatsappMessage += `*User:* ${username}%0A*Email:* ${loggedInUserEmail}%0A*Phone:* ${phoneNumber}%0A*Address:* ${address}%0A`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">      const encodedMessage = encodeURI(whatsappMessage);</span></p>
+<p class="p3"><span class="s2">      window.open(`<a href="https://wa.me/91XXXXXXXXXX?text=$%7BencodedMessage%7D%60"><span class="s3">https://wa.me/91XXXXXXXXXX?text=${encodedMessage}`</span></a>, "_blank");</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function logout() {</span></p>
+<p class="p1"><span class="s1">      loggedInUserEmail = null;</span></p>
+<p class="p1"><span class="s1">      localStorage.removeItem("loggedInUser");</span></p>
+<p class="p1"><span class="s1">      alert("Logged out");</span></p>
+<p class="p1"><span class="s1">      openTab(null, "home");</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    // Signup</span></p>
+<p class="p1"><span class="s1">    document.getElementById("signupForm").addEventListener("submit", function (e) {</span></p>
+<p class="p1"><span class="s1">      e.preventDefault();</span></p>
+<p class="p1"><span class="s1">      const username = document.getElementById("signup-username").value;</span></p>
+<p class="p1"><span class="s1">      const email = document.getElementById("signup-email").value;</span></p>
+<p class="p1"><span class="s1">      const password = document.getElementById("signup-password").value;</span></p>
+<p class="p1"><span class="s1">      const phone = document.getElementById("signup-phone").value;</span></p>
+<p class="p1"><span class="s1">      const address = document.getElementById("signup-address").value;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">      if (!users[email]) {</span></p>
+<p class="p1"><span class="s1">        users[email] = { username, password, phone, address };</span></p>
+<p class="p1"><span class="s1">        saveUsers();</span></p>
+<p class="p1"><span class="s1">        document.getElementById("signup-message").textContent = "Signup successful. Please log in.";</span></p>
+<p class="p1"><span class="s1">        openTab(null, "login");</span></p>
+<p class="p1"><span class="s1">      } else {</span></p>
+<p class="p1"><span class="s1">        document.getElementById("signup-message").textContent = "Email already registered.";</span></p>
+<p class="p1"><span class="s1">      }</span></p>
+<p class="p1"><span class="s1">    });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    // Login</span></p>
+<p class="p1"><span class="s1">    document.getElementById("loginForm").addEventListener("submit", function (e) {</span></p>
+<p class="p1"><span class="s1">      e.preventDefault();</span></p>
+<p class="p1"><span class="s1">      const email = document.getElementById("login-email").value;</span></p>
+<p class="p1"><span class="s1">      const password = document.getElementById("login-password").value;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">      if (users[email] &amp;&amp; users[email].password === password) {</span></p>
+<p class="p1"><span class="s1">        loggedInUserEmail = email;</span></p>
+<p class="p1"><span class="s1">        localStorage.setItem("loggedInUser", email);</span></p>
+<p class="p1"><span class="s1">        document.getElementById("login-message").textContent = "Login successful.";</span></p>
+<p class="p1"><span class="s1">        openTab(null, "products");</span></p>
+<p class="p1"><span class="s1">      } else {</span></p>
+<p class="p1"><span class="s1">        document.getElementById("login-message").textContent = "Invalid credentials.";</span></p>
+<p class="p1"><span class="s1">      }</span></p>
+<p class="p1"><span class="s1">    });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    // Profile</span></p>
+<p class="p1"><span class="s1">    function displayProfileDetails() {</span></p>
+<p class="p1"><span class="s1">      const profileContainer = document.getElementById("profile-details");</span></p>
+<p class="p1"><span class="s1">      if (!loggedInUserEmail || !users[loggedInUserEmail]) {</span></p>
+<p class="p1"><span class="s1">        profileContainer.innerHTML = "&lt;p&gt;No user data found.&lt;/p&gt;";</span></p>
+<p class="p1"><span class="s1">        return;</span></p>
+<p class="p1"><span class="s1">      }</span></p>
+<p class="p1"><span class="s1">      const user = users[loggedInUserEmail];</span></p>
+<p class="p1"><span class="s1">      profileContainer.innerHTML = `</span></p>
+<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Username:&lt;/strong&gt; ${user.username}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; ${loggedInUserEmail}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Phone:&lt;/strong&gt; ${user.phone}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Address:&lt;/strong&gt; ${user.address}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">      `;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function editAddress() {</span></p>
+<p class="p1"><span class="s1">      document.getElementById("edit-address-form").style.display = "block";</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    function saveNewAddress() {</span></p>
+<p class="p1"><span class="s1">      const newAddress = document.getElementById("new-address").value.trim();</span></p>
+<p class="p1"><span class="s1">      if (loggedInUserEmail &amp;&amp; users[loggedInUserEmail]) {</span></p>
+<p class="p1"><span class="s1">        users[loggedInUserEmail].address = newAddress;</span></p>
+<p class="p1"><span class="s1">        saveUsers();</span></p>
+<p class="p1"><span class="s1">        displayProfileDetails();</span></p>
+<p class="p1"><span class="s1">        document.getElementById("edit-address-form").style.display = "none";</span></p>
+<p class="p1"><span class="s1">      }</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    // Load home tab by default</span></p>
+<p class="p1"><span class="s1">    openTab(null, "home");</span></p>
+<p class="p1"><span class="s1">  &lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
