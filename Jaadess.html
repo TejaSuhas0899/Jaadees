@@ -1,239 +1,942 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px Helvetica; color: #c7c8c9; -webkit-text-stroke: #c7c8c9; background-color: #1a1c1f}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px Helvetica; color: #c7c8c9; -webkit-text-stroke: #c7c8c9; background-color: #1a1c1f; min-height: 18.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px Helvetica; color: #1d88c6; -webkit-text-stroke: #1d88c6; background-color: #1a1c1f}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; color: #c7c8c9; -webkit-text-stroke: 0px #c7c8c9}
-    span.s3 {text-decoration: underline ; font-kerning: none; color: #1d88c6; -webkit-text-stroke: 0px #1d88c6}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jadees Homemade Foods</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      padding: 0;
+      margin: 0;
+      background-color: #FFF8E1;
+      color: #3E2723;
+      padding-bottom: 120px; /* Add padding to prevent content from being hidden by fixed footer */
+    }
+
+    h1, h2 {
+      color: #D84315;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #FFECB3;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: #FB8C00;
+      padding: 10px 0;
+      border-bottom: 3px solid #E65100;
+    }
+
+    .tab-buttons button {
+      background-color: #FFB300;
+      color: #FFFFFF;
+      border: none;
+      padding: 12px 25px;
+      margin: 5px 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .tab-buttons button:hover {
+      background-color: #E65100;
+      transform: translateY(-2px);
+    }
+
+    .tab {
+      display: none;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFE082;
+      border-radius: 10px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    form input[type="email"],
+    form input[type="password"],
+    form input[type="text"] {
+      padding: 12px;
+      border: 1px solid #FFCA28;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: #FFFDE7;
+    }
+
+    form button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    form button[type="submit"]:hover {
+      background-color: #388E3C;
+    }
+
+    p#login-message, p#signup-message {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #D84315;
+    }
+
+    /* Product list styling */
+    .product-category {
+        margin-bottom: 30px;
+        border: 1px solid #FFCC80;
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #FFFDE7;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-category h3 {
+        color: #E65100;
+        margin-top: 0;
+        border-bottom: 2px solid #FFAB40;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px dashed #FFCC80;
+    }
+
+    .product-item:last-child {
+        border-bottom: none;
+    }
+
+    .product-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .product-info span {
+        font-size: 16px;
+        color: #3E2723;
+        font-weight: bold;
+    }
+
+    .price-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .price-options label {
+        font-size: 14px;
+        cursor: pointer;
+        background-color: #FFFAE2;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #FFD54F;
+        transition: background-color 0.2s;
+    }
+
+    .price-options label:has(input[type="radio"]:checked) {
+        background-color: #FFECB3;
+        border-color: #FB8C00;
+        font-weight: bold;
+    }
+
+    .quantity-wrapper {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .quantity-control {
+        display: none; /* Hidden by default */
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto; /* Center the controls */
+        border: 1px solid #FFCC80;
+        border-radius: 8px;
+        padding: 5px;
+        background-color: #FFF3E0;
+        width: fit-content;
+    }
+
+    .quantity-control.active {
+        display: flex; /* Show when active */
+    }
+
+    .quantity-control button {
+        background-color: #689F38;
+        color: white;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        margin: 0 5px;
+        min-width: 30px; /* Ensure buttons have minimum width */
+    }
+
+    .quantity-control button:hover {
+        background-color: #558B2F;
+    }
+
+    .quantity-display {
+        min-width: 30px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #D84315;
+    }
+
+    /* Mini-cart footer styles */
+    #mini-cart-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #FFECB3; /* Lighter background for the footer */
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0; /* No padding here, handled by child elements */
+      border-top: 2px solid #FB8C00;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1000; /* Ensure it stays on top */
+      transition: height 0.3s ease-out; /* Smooth transition for height */
+      height: auto; /* Allow height to adjust based on content */
+    }
+
+    .cart-summary {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #FB8C00; /* Distinct color for summary bar */
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+
+    .cart-summary h3 {
+        margin: 0;
+        color: white; /* Ensure text is white */
+        font-size: 1.1em;
+    }
+
+    #cart-toggle-icon {
+        font-size: 1.5em;
+        transition: transform 0.3s ease;
+        line-height: 1; /* Align vertically */
+    }
+
+    .cart-details {
+        width: 100%;
+        padding: 10px 20px; /* Add padding here */
+        box-sizing: border-box;
+        max-height: 200px; /* Limit height of scrollable cart details */
+        overflow-y: auto; /* Enable scrolling for many items */
+        display: none; /* Hidden by default */
+    }
+
+    #cart-items { /* This UL is now inside the fixed footer */
+      list-style-type: none;
+      padding: 0;
+      margin: 0 auto 10px auto; /* Center list and add bottom margin */
+      max-width: 760px; /* Constrain width of cart items */
+      width: 100%;
+      text-align: left;
+      background-color: #FFF3E0; /* Slightly different background for the list */
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    #cart-items li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #FFCC80;
+      font-size: 0.95em;
+    }
+
+    #cart-items li:last-child {
+      border-bottom: none;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .cart-buttons {
+        display: flex;
+        justify-content: space-around; /* Space out the buttons */
+        gap: 10px; /* Gap between buttons */
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding-bottom: 10px; /* Add padding below buttons */
+    }
+
+    .cart-buttons button { /* Checkout button inside footer */
+      background-color: #00796B;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      flex-grow: 1; /* Make buttons grow to fill space */
+      margin: 0; /* Reset margin */
+      width: auto; /* Allow flex-grow to control width */
+      max-width: none; /* Remove max-width inherited from products button */
+    }
+
+    .cart-buttons button:hover {
+      background-color: #004D40;
+    }
+
+    .cart-buttons .clear-cart-btn {
+        background-color: #D32F2F; /* Red color for clear button */
+    }
+    .cart-buttons .clear-cart-btn:hover {
+        background-color: #B71C1C;
+    }
+
+    #profile-details p {
+      background-color: #FFE0B2;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      text-align: left;
+    }
+
+    #profile button, #edit-address-form button {
+      background-color: #FB8C00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    #profile button:hover, #edit-address-form button:hover {
+      background-color: #E65100;
+    }
+
+    #edit-address-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 300px;
+      margin: 15px auto 0;
+      padding: 15px;
+      background-color: #FFCC80;
+      border-radius: 8px;
+    }
+
+    #edit-address-form input {
+      padding: 10px;
+      border: 1px solid #FFA726;
+      border-radius: 5px;
+    }
+
+    #home .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    #home .logo-container img {
+      max-width: 300px;
+      height: auto;
+      border: 5px solid #FFC107;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(to bottom right, #FFECB3, #FFAB40);
+    }
+
+    /* Notification Toast */
+    #notification-toast {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #4CAF50; /* Green for success */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 2000; /* Ensure it's above everything */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #notification-toast.show {
+        opacity: 1;
+        visibility: visible;
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta charset="UTF-8" /&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;title&gt;Jadees Homemade Foods&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;style&gt;</span></p>
-<p class="p1"><span class="s1">    body { font-family: Arial, sans-serif; padding: 20px; }</span></p>
-<p class="p1"><span class="s1">    .tab { display: none; margin-top: 20px; }</span></p>
-<p class="p1"><span class="s1">    .tab-buttons button { margin: 5px; }</span></p>
-<p class="p1"><span class="s1">  &lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;h1&gt;Jadees Homemade Foods&lt;/h1&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;!-- Navigation Tabs --&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;div class="tab-buttons"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'home')"&gt;Home&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'login')"&gt;Login&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'signup')"&gt;Signup&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'products')"&gt;Products&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="openTab(event, 'profile')"&gt;Profile&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="logout()"&gt;Logout&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;!-- Tabs --&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;div id="home" class="tab"&gt;&lt;h2&gt;Welcome to Jadees&lt;/h2&gt;&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;div id="login" class="tab"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h2&gt;Login&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;form id="loginForm"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="email" id="login-email" placeholder="Email" required&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="password" id="login-password" placeholder="Password" required&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button type="submit"&gt;Login&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/form&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="login-message"&gt;&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;div id="signup" class="tab"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h2&gt;Signup&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;form id="signupForm"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="text" id="signup-username" placeholder="Username" required&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="email" id="signup-email" placeholder="Email" required&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="password" id="signup-password" placeholder="Password" required&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="text" id="signup-phone" placeholder="Phone" required&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="text" id="signup-address" placeholder="Address" required&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button type="submit"&gt;Signup&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/form&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="signup-message"&gt;&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;div id="products" class="tab"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h2&gt;Products&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div id="product-list"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h3&gt;Cart&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;ul id="cart-items"&gt;&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="checkout()"&gt;Checkout via WhatsApp&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;div id="profile" class="tab"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h2&gt;Profile&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div id="profile-details"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="editAddress()"&gt;Edit Address&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div id="edit-address-form" style="display:none;"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="text" id="new-address" placeholder="Enter new address"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button onclick="saveNewAddress()"&gt;Save&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;!-- JS Logic --&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;script&gt;</span></p>
-<p class="p1"><span class="s1">    const products = [</span></p>
-<p class="p1"><span class="s1">      { name: "Pickle", price: 150 },</span></p>
-<p class="p1"><span class="s1">      { name: "Fryums", price: 80 },</span></p>
-<p class="p1"><span class="s1">      { name: "Sweets", price: 120 },</span></p>
-<p class="p1"><span class="s1">    ];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    const productList = document.getElementById("product-list");</span></p>
-<p class="p1"><span class="s1">    const cartItems = document.getElementById("cart-items");</span></p>
-<p class="p1"><span class="s1">    let cart = [];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    let users = JSON.parse(localStorage.getItem("users")) || {};</span></p>
-<p class="p1"><span class="s1">    let loggedInUserEmail = localStorage.getItem("loggedInUser") || null;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function saveUsers() {</span></p>
-<p class="p1"><span class="s1">      localStorage.setItem("users", JSON.stringify(users));</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function openTab(evt, tabId) {</span></p>
-<p class="p1"><span class="s1">      document.querySelectorAll(".tab").forEach(tab =&gt; tab.style.display = "none");</span></p>
-<p class="p1"><span class="s1">      document.getElementById(tabId).style.display = "block";</span></p>
-<p class="p1"><span class="s1">      if (tabId === "products") renderProducts();</span></p>
-<p class="p1"><span class="s1">      if (tabId === "profile") displayProfileDetails();</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function renderProducts() {</span></p>
-<p class="p1"><span class="s1">      productList.innerHTML = "";</span></p>
-<p class="p1"><span class="s1">      products.forEach((product, index) =&gt; {</span></p>
-<p class="p1"><span class="s1">        const div = document.createElement("div");</span></p>
-<p class="p1"><span class="s1">        div.innerHTML = `${product.name} - ₹${product.price}</span></p>
-<p class="p1"><span class="s1">          &lt;button onclick="addToCart(${index})"&gt;Add&lt;/button&gt;`;</span></p>
-<p class="p1"><span class="s1">        productList.appendChild(div);</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function addToCart(index) {</span></p>
-<p class="p1"><span class="s1">      cart.push(products[index]);</span></p>
-<p class="p1"><span class="s1">      updateCartDisplay();</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function updateCartDisplay() {</span></p>
-<p class="p1"><span class="s1">      cartItems.innerHTML = "";</span></p>
-<p class="p1"><span class="s1">      cart.forEach(item =&gt; {</span></p>
-<p class="p1"><span class="s1">        const li = document.createElement("li");</span></p>
-<p class="p1"><span class="s1">        li.textContent = `${item.name} - ₹${item.price}`;</span></p>
-<p class="p1"><span class="s1">        cartItems.appendChild(li);</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function checkout() {</span></p>
-<p class="p1"><span class="s1">      if (!loggedInUserEmail) {</span></p>
-<p class="p1"><span class="s1">        alert("Please login first.");</span></p>
-<p class="p1"><span class="s1">        return;</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">      const currentUserDetails = users[loggedInUserEmail];</span></p>
-<p class="p1"><span class="s1">      const username = currentUserDetails.username;</span></p>
-<p class="p1"><span class="s1">      const phoneNumber = currentUserDetails.phone || "Not provided";</span></p>
-<p class="p1"><span class="s1">      const address = currentUserDetails.address || "Not provided";</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      let whatsappMessage = `*Order from Jadees*%0A%0A`;</span></p>
-<p class="p1"><span class="s1">      cart.forEach(item =&gt; {</span></p>
-<p class="p1"><span class="s1">        whatsappMessage += `- ${item.name} - ₹${item.price}%0A`;</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      const total = cart.reduce((sum, item) =&gt; sum + item.price, 0);</span></p>
-<p class="p1"><span class="s1">      whatsappMessage += `%0A*Total:* ₹${total}%0A%0A`;</span></p>
-<p class="p1"><span class="s1">      whatsappMessage += `*User:* ${username}%0A*Email:* ${loggedInUserEmail}%0A*Phone:* ${phoneNumber}%0A*Address:* ${address}%0A`;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      const encodedMessage = encodeURI(whatsappMessage);</span></p>
-<p class="p3"><span class="s2">      window.open(`<a href="https://wa.me/91XXXXXXXXXX?text=$%7BencodedMessage%7D%60"><span class="s3">https://wa.me/91XXXXXXXXXX?text=${encodedMessage}`</span></a>, "_blank");</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function logout() {</span></p>
-<p class="p1"><span class="s1">      loggedInUserEmail = null;</span></p>
-<p class="p1"><span class="s1">      localStorage.removeItem("loggedInUser");</span></p>
-<p class="p1"><span class="s1">      alert("Logged out");</span></p>
-<p class="p1"><span class="s1">      openTab(null, "home");</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    // Signup</span></p>
-<p class="p1"><span class="s1">    document.getElementById("signupForm").addEventListener("submit", function (e) {</span></p>
-<p class="p1"><span class="s1">      e.preventDefault();</span></p>
-<p class="p1"><span class="s1">      const username = document.getElementById("signup-username").value;</span></p>
-<p class="p1"><span class="s1">      const email = document.getElementById("signup-email").value;</span></p>
-<p class="p1"><span class="s1">      const password = document.getElementById("signup-password").value;</span></p>
-<p class="p1"><span class="s1">      const phone = document.getElementById("signup-phone").value;</span></p>
-<p class="p1"><span class="s1">      const address = document.getElementById("signup-address").value;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      if (!users[email]) {</span></p>
-<p class="p1"><span class="s1">        users[email] = { username, password, phone, address };</span></p>
-<p class="p1"><span class="s1">        saveUsers();</span></p>
-<p class="p1"><span class="s1">        document.getElementById("signup-message").textContent = "Signup successful. Please log in.";</span></p>
-<p class="p1"><span class="s1">        openTab(null, "login");</span></p>
-<p class="p1"><span class="s1">      } else {</span></p>
-<p class="p1"><span class="s1">        document.getElementById("signup-message").textContent = "Email already registered.";</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">    });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    // Login</span></p>
-<p class="p1"><span class="s1">    document.getElementById("loginForm").addEventListener("submit", function (e) {</span></p>
-<p class="p1"><span class="s1">      e.preventDefault();</span></p>
-<p class="p1"><span class="s1">      const email = document.getElementById("login-email").value;</span></p>
-<p class="p1"><span class="s1">      const password = document.getElementById("login-password").value;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      if (users[email] &amp;&amp; users[email].password === password) {</span></p>
-<p class="p1"><span class="s1">        loggedInUserEmail = email;</span></p>
-<p class="p1"><span class="s1">        localStorage.setItem("loggedInUser", email);</span></p>
-<p class="p1"><span class="s1">        document.getElementById("login-message").textContent = "Login successful.";</span></p>
-<p class="p1"><span class="s1">        openTab(null, "products");</span></p>
-<p class="p1"><span class="s1">      } else {</span></p>
-<p class="p1"><span class="s1">        document.getElementById("login-message").textContent = "Invalid credentials.";</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">    });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    // Profile</span></p>
-<p class="p1"><span class="s1">    function displayProfileDetails() {</span></p>
-<p class="p1"><span class="s1">      const profileContainer = document.getElementById("profile-details");</span></p>
-<p class="p1"><span class="s1">      if (!loggedInUserEmail || !users[loggedInUserEmail]) {</span></p>
-<p class="p1"><span class="s1">        profileContainer.innerHTML = "&lt;p&gt;No user data found.&lt;/p&gt;";</span></p>
-<p class="p1"><span class="s1">        return;</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">      const user = users[loggedInUserEmail];</span></p>
-<p class="p1"><span class="s1">      profileContainer.innerHTML = `</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Username:&lt;/strong&gt; ${user.username}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; ${loggedInUserEmail}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Phone:&lt;/strong&gt; ${user.phone}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;Address:&lt;/strong&gt; ${user.address}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">      `;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function editAddress() {</span></p>
-<p class="p1"><span class="s1">      document.getElementById("edit-address-form").style.display = "block";</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function saveNewAddress() {</span></p>
-<p class="p1"><span class="s1">      const newAddress = document.getElementById("new-address").value.trim();</span></p>
-<p class="p1"><span class="s1">      if (loggedInUserEmail &amp;&amp; users[loggedInUserEmail]) {</span></p>
-<p class="p1"><span class="s1">        users[loggedInUserEmail].address = newAddress;</span></p>
-<p class="p1"><span class="s1">        saveUsers();</span></p>
-<p class="p1"><span class="s1">        displayProfileDetails();</span></p>
-<p class="p1"><span class="s1">        document.getElementById("edit-address-form").style.display = "none";</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    // Load home tab by default</span></p>
-<p class="p1"><span class="s1">    openTab(null, "home");</span></p>
-<p class="p1"><span class="s1">  &lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+  <div class="container">
+    <h1>Jadees Homemade Foods</h1>
+
+    <div class="tab-buttons" id="main-nav-buttons">
+      <button id="home-button" onclick="openTab(event, 'home')">Home</button>
+      <button id="login-button" onclick="openTab(event, 'login')">Login</button>
+      <button id="signup-button" onclick="openTab(event, 'signup')">Signup</button>
+      <button id="products-button" onclick="openTab(event, 'products')">Products</button>
+      <button id="profile-button" onclick="openTab(event, 'profile')">Profile</button>
+      <button id="logout-button" onclick="logout()">Logout</button>
+    </div>
+
+    <div id="home" class="tab">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Jadees Logo">
+        </div>
+        <h2>A Taste of Home</h2>
+        <p>Welcome to Jadees, your destination for delicious homemade foods with 100% Natural Ingredients. We bring you the authentic taste of tradition, crafted with care and natural ingredients.</p>
+    </div>
+
+    <div id="login" class="tab">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" id="login-email" placeholder="Email" required><br>
+        <input type="password" id="login-password" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+      </form>
+      <p id="login-message"></p>
+    </div>
+
+    <div id="signup" class="tab">
+      <h2>Signup</h2>
+      <form id="signupForm">
+        <input type="text" id="signup-username" placeholder="Username" required><br>
+        <input type="email" id="signup-email" placeholder="Email" required><br>
+        <input type="password" id="signup-password" placeholder="Password" required><br>
+        <input type="text" id="signup-phone" placeholder="Phone" required><br>
+        <input type="text" id="signup-address" placeholder="Address" required><br>
+        <button type="submit">Signup</button>
+      </form>
+      <p id="signup-message"></p>
+    </div>
+
+    <div id="products" class="tab">
+      <h2>Products</h2>
+      <div id="product-list"></div>
+    </div>
+
+    <div id="profile" class="tab">
+      <h2>Profile</h2>
+      <div id="profile-details"></div>
+      <button onclick="editAddress()">Edit Address</button>
+      <div id="edit-address-form" style="display:none;">
+        <input type="text" id="new-address" placeholder="Enter new address">
+        <button onclick="saveNewAddress()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification-toast"></div>
+
+  <div id="mini-cart-footer">
+    <div class="cart-summary" onclick="toggleCartDetails()">
+        <h3>Your Cart (<span id="cart-item-count">0</span> items) - Total: ₹<span id="cart-total-summary">0</span></h3>
+        <span id="cart-toggle-icon">&#9650;</span> </div>
+    <div class="cart-details" style="display: none;">
+        <ul id="cart-items"></ul>
+        <div class="cart-buttons">
+            <button onclick="checkout()">Checkout via WhatsApp</button>
+            <button onclick="clearCart()" class="clear-cart-btn">Clear Cart</button>
+        </div>
+    </div>
+  </div>
+
+
+  <script>
+    const products = {
+      "Veg Pickles": [
+        { name: "Tomato Pickle", price: { "500gms": 250, "1Kg": 500 } },
+        { name: "Pandu Mirchi Pickle", price: { "500gms": 250, "1Kg": 500 } },
+        { name: "Ginger Pickle", price: { "500gms": 250, "1Kg": 500 } },
+        { name: "Gongura Pickle", price: { "500gms": 250, "1Kg": 500 } },
+        { name: "Amla Pickle", price: { "500gms": 250, "1Kg": 500 } },
+        { name: "Mango Pickle", price: { "500gms": 250, "1Kg": 500 } }
+      ],
+      "Non-Veg Pickles": [
+        { name: "Chicken Pickle", price: { "500gms": 500, "1Kg": 1000 } },
+        { name: "Bone less Chicken", price: { "500gms": 600, "1Kg": 1200 } },
+        { name: "Prawns Pickle", price: { "500gms": 800, "1Kg": 1500 } },
+        { name: "Mutton Pickle", price: { "500gms": 1000, "1Kg": 1900 } }
+      ],
+      "Powders": [
+        { name: "Curry leaves Powder", price: { "250gms": 200 } },
+        { name: "Moringa Powder", price: { "250gms": 200 } },
+        { name: "Nalla Kaaram", price: { "250gms": 200 } }
+      ]
+    };
+
+    const productList = document.getElementById("product-list");
+    const cartItems = document.getElementById("cart-items"); // UL for detailed cart items
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // Load cart from localStorage
+
+    let users = JSON.parse(localStorage.getItem("users")) || {};
+    let loggedInUserEmail = localStorage.getItem("loggedInUser") || null;
+
+    // New DOM variables for collapsible cart and notification
+    const cartDetails = document.querySelector('.cart-details');
+    const cartToggleIcon = document.getElementById('cart-toggle-icon');
+    const cartItemCountSpan = document.getElementById('cart-item-count');
+    const cartTotalSummarySpan = document.getElementById('cart-total-summary');
+    const notificationToast = document.getElementById('notification-toast');
+
+
+    function saveUsers() {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    function saveCart() {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    // New function to toggle cart details visibility
+    function toggleCartDetails() {
+        if (cartDetails.style.display === 'none') {
+            cartDetails.style.display = 'block';
+            cartToggleIcon.style.transform = 'rotate(180deg)'; // Rotate to down arrow
+        } else {
+            cartDetails.style.display = 'none';
+            cartToggleIcon.style.transform = 'rotate(0deg)'; // Rotate back to up arrow
+        }
+    }
+
+    // New function for toast notifications
+    function showNotification(message, type = 'success') {
+        notificationToast.textContent = message;
+        notificationToast.className = ''; // Reset classes
+        notificationToast.classList.add(type); // Add type for custom styling if needed (e.g., 'success', 'error')
+        notificationToast.classList.add('show');
+
+        // Hide after a few seconds
+        setTimeout(() => {
+            notificationToast.classList.remove('show');
+        }, 3000);
+    }
+
+
+    function updateNavButtons() {
+      const homeButton = document.getElementById("home-button");
+      const loginButton = document.getElementById("login-button");
+      const signupButton = document.getElementById("signup-button");
+      const productsButton = document.getElementById("products-button");
+      const profileButton = document.getElementById("profile-button");
+      const logoutButton = document.getElementById("logout-button");
+
+      if (loggedInUserEmail) {
+        homeButton.style.display = "inline-block";
+        productsButton.style.display = "inline-block";
+        profileButton.style.display = "inline-block";
+        logoutButton.style.display = "inline-block";
+        loginButton.style.display = "none";
+        signupButton.style.display = "none";
+      } else {
+        homeButton.style.display = "inline-block";
+        loginButton.style.display = "inline-block";
+        signupButton.style.display = "inline-block";
+        productsButton.style.display = "none";
+        profileButton.style.display = "none";
+        logoutButton.style.display = "none";
+      }
+    }
+
+    function openTab(evt, tabId) {
+      document.querySelectorAll(".tab").forEach(tab => tab.style.display = "none");
+      document.getElementById(tabId).style.display = "block";
+
+      if ((tabId === "products" || tabId === "profile") && !loggedInUserEmail) {
+          alert("Please login to access this page.");
+          openTab(null, "login");
+          return;
+      }
+
+      updateNavButtons();
+
+      if (tabId === "products") renderProducts();
+      if (tabId === "profile") displayProfileDetails();
+      updateCartDisplay(); // Always update cart display when opening any tab
+    }
+
+    function renderProducts() {
+        productList.innerHTML = "";
+        for (const category in products) {
+            const categoryDiv = document.createElement("div");
+            categoryDiv.classList.add("product-category");
+            categoryDiv.innerHTML = `<h3>${category}</h3>`;
+
+            products[category].forEach((product) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("product-item");
+
+                const productNameCleaned = product.name.replace(/\s/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+
+                let priceOptionsHtml = '';
+                for (const size in product.price) {
+                    const uniqueId = `${productNameCleaned}_${size}`;
+                    priceOptionsHtml += `
+                        <label>
+                            <input type="radio" name="${productNameCleaned}_size" value="${size}"
+                                   data-product-name="${product.name}"
+                                   data-product-price-value="${product.price[size]}"
+                                   data-product-unique-id="${uniqueId}"
+                                   onchange="handleSizeSelection(this)">
+                            ${size} - ₹${product.price[size]}
+                        </label>
+                    `;
+                }
+
+                itemDiv.innerHTML = `
+                    <div class="product-info">
+                        <span>${product.name}</span>
+                    </div>
+                    <div class="price-options">
+                        ${priceOptionsHtml}
+                    </div>
+                    <div class="quantity-wrapper">
+                        </div>
+                `;
+                categoryDiv.appendChild(itemDiv);
+            });
+            productList.appendChild(categoryDiv);
+        }
+        // After rendering, ensure the initial quantity for selected radio buttons is displayed
+        document.querySelectorAll('.product-item input[type="radio"]').forEach(radio => {
+            const productName = radio.dataset.productName;
+            const size = radio.value;
+            const cartItem = cart.find(item => item.name === productName && item.size === size);
+            if (cartItem) {
+                radio.checked = true;
+                handleSizeSelection(radio);
+            }
+        });
+    }
+
+    function handleSizeSelection(selectedRadio) {
+        const productName = selectedRadio.dataset.productName;
+        const selectedSize = selectedRadio.value;
+        const selectedPrice = parseFloat(selectedRadio.dataset.productPriceValue);
+        const uniqueId = selectedRadio.dataset.productUniqueId;
+
+        // Hide all quantity controls within the same product item
+        const productItemDiv = selectedRadio.closest('.product-item');
+        productItemDiv.querySelectorAll('.quantity-control').forEach(qc => qc.remove()); // Remove existing ones
+
+        // Create and append new quantity controls for the selected size
+        const quantityWrapper = productItemDiv.querySelector('.quantity-wrapper');
+        const qtyControlDiv = document.createElement('div');
+        qtyControlDiv.classList.add('quantity-control', 'active');
+        qtyControlDiv.dataset.productUniqueId = uniqueId;
+
+        const currentCartItem = cart.find(item => item.name === productName && item.size === selectedSize);
+        const currentQuantity = currentCartItem ? currentCartItem.quantity : 0;
+
+        qtyControlDiv.innerHTML = `
+            <button onclick="changeQuantity('${productName}', '${selectedSize}', -1)">-</button>
+            <span class="quantity-display" id="qty-display-${uniqueId}">${currentQuantity}</span>
+            <button onclick="changeQuantity('${productName}', '${selectedSize}', 1)">+</button>
+        `;
+        quantityWrapper.appendChild(qtyControlDiv);
+    }
+
+    function findProductDetails(name, size) {
+        for (const category in products) {
+            const product = products[category].find(p => p.name === name);
+            if (product && product.price[size] !== undefined) {
+                return {
+                    name: name,
+                    size: size,
+                    price: product.price[size],
+                    category: category
+                };
+            }
+        }
+        return null;
+    }
+
+    function changeQuantity(productName, size, delta) {
+        const productDetails = findProductDetails(productName, size);
+        if (!productDetails) return;
+
+        let cartItem = cart.find(item => item.name === productName && item.size === size);
+        let newQuantity;
+        let notificationMessage = '';
+
+        if (cartItem) {
+            newQuantity = cartItem.quantity + delta;
+        } else {
+            if (delta === 1) {
+                newQuantity = 1;
+            } else {
+                newQuantity = 0;
+            }
+        }
+
+        if (newQuantity < 0) newQuantity = 0;
+
+        if (newQuantity === 0 && cartItem) {
+            cart = cart.filter(item => !(item.name === productName && item.size === size));
+            notificationMessage = `${productName} (${size}) removed from cart.`;
+        } else if (newQuantity > 0) {
+            if (cartItem) {
+                cartItem.quantity = newQuantity;
+                notificationMessage = `${productName} (${size}) quantity updated to ${newQuantity}.`;
+            } else {
+                cart.push({
+                    name: productName,
+                    size: size,
+                    price: productDetails.price,
+                    quantity: newQuantity
+                });
+                notificationMessage = `${productName} (${size}) added to cart.`;
+            }
+        }
+
+        const uniqueId = `${productName.replace(/\s/g, '_').replace(/[^a-zA-Z0-9_]/g, '')}_${size}`;
+        const qtyDisplayElement = document.getElementById(`qty-display-${uniqueId}`);
+        if (qtyDisplayElement) {
+            qtyDisplayElement.textContent = newQuantity;
+        }
+
+        saveCart();
+        updateCartDisplay();
+        if (notificationMessage) {
+            showNotification(notificationMessage);
+        }
+    }
+
+    // Modified updateCartDisplay to also update summary bar
+    function updateCartDisplay() {
+      cartItems.innerHTML = "";
+      let totalItems = 0;
+      let totalAmount = 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = "<li>Your cart is empty.</li>";
+        // Optionally collapse cart details if it's open and becomes empty
+        if (cartDetails.style.display === 'block') {
+             toggleCartDetails();
+        }
+      } else {
+        cart.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = `${item.name} (${item.size}) x ${item.quantity} - ₹${item.price * item.quantity}`;
+          cartItems.appendChild(li);
+          totalItems += item.quantity;
+          totalAmount += (item.price * item.quantity);
+        });
+
+        const totalLi = document.createElement("li");
+        totalLi.innerHTML = `<strong>Total: ₹${totalAmount}</strong>`;
+        cartItems.appendChild(totalLi);
+      }
+
+      // Update the summary bar
+      cartItemCountSpan.textContent = totalItems;
+      cartTotalSummarySpan.textContent = totalAmount;
+    }
+
+    // New function to clear the entire cart
+    function clearCart() {
+        if (confirm("Are you sure you want to clear your cart?")) {
+            cart = [];
+            saveCart();
+            updateCartDisplay();
+            showNotification("Cart cleared!");
+            // Optionally, collapse cart details after clearing
+            if (cartDetails.style.display === 'block') {
+                toggleCartDetails();
+            }
+            // Reset product quantities on the main products page
+            document.querySelectorAll('.quantity-display').forEach(display => {
+                display.textContent = '0';
+            });
+            // Uncheck all radio buttons
+            document.querySelectorAll('.product-item input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+                // Optionally remove quantity controls if radio is unchecked
+                const productItemDiv = radio.closest('.product-item');
+                if (productItemDiv) {
+                    productItemDiv.querySelectorAll('.quantity-control').forEach(qc => qc.remove());
+                }
+            });
+        }
+    }
+
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      if (!loggedInUserEmail) {
+        alert("Please login first to checkout.");
+        return;
+      }
+      const currentUserDetails = users[loggedInUserEmail];
+      const username = currentUserDetails.username;
+      const phoneNumber = currentUserDetails.phone || "Not provided";
+      const address = currentUserDetails.address || "Not provided";
+
+      let whatsappMessage = `*Order from Jadees app*`;
+      cart.forEach(item => {
+        whatsappMessage += `- ${item.name} (${item.size}) x ${item.quantity} - ₹${item.price * item.quantity}`;
+      });
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      whatsappMessage += `*Total:* ₹${total}`;
+      whatsappMessage += `*User:* ${username}*Email:* ${loggedInUserEmail}*Phone:* ${phoneNumber}*Address:* ${address}`;
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      window.open(`https://wa.me/917386367288?text=${encodedMessage}`, "_blank");
+    }
+
+    function logout() {
+      loggedInUserEmail = null;
+      localStorage.removeItem("loggedInUser");
+      localStorage.removeItem("cart"); // Clear cart on logout
+      cart = [];
+      alert("Logged out");
+      updateCartDisplay();
+      openTab(null, "home");
+      // Reset product quantities and radio selections on logout
+      document.querySelectorAll('.quantity-display').forEach(display => {
+          display.textContent = '0';
+      });
+      document.querySelectorAll('.product-item input[type="radio"]').forEach(radio => {
+          radio.checked = false;
+          const productItemDiv = radio.closest('.product-item');
+          if (productItemDiv) {
+              productItemDiv.querySelectorAll('.quantity-control').forEach(qc => qc.remove());
+          }
+      });
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("signup-username").value;
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      const phone = document.getElementById("signup-phone").value;
+      const address = document.getElementById("signup-address").value;
+
+      if (!users[email]) {
+        users[email] = { username, password, phone, address };
+        saveUsers();
+        document.getElementById("signup-message").textContent = "Signup successful. Please log in.";
+        openTab(null, "login");
+      } else {
+        document.getElementById("signup-message").textContent = "Email already registered.";
+      }
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      if (users[email] && users[email].password === password) {
+        loggedInUserEmail = email;
+        localStorage.setItem("loggedInUser", email);
+        document.getElementById("login-message").textContent = "Login successful.";
+        openTab(null, "products");
+      } else {
+        document.getElementById("login-message").textContent = "Invalid credentials.";
+      }
+    });
+
+    function displayProfileDetails() {
+      const profileContainer = document.getElementById("profile-details");
+      if (!loggedInUserEmail || !users[loggedInUserEmail]) {
+        profileContainer.innerHTML = "<p>Please log in to view your profile.</p>";
+        return;
+      }
+      const user = users[loggedInUserEmail];
+      profileContainer.innerHTML = `
+        <p><strong>Username:</strong> ${user.username}</p>
+        <p><strong>Email:</strong> ${loggedInUserEmail}</p>
+        <p><strong>Phone:</strong> ${user.phone || 'N/A'}</p>
+        <p><strong>Address:</strong> ${user.address || 'N/A'}</p>
+      `;
+    }
+
+    function editAddress() {
+      document.getElementById("edit-address-form").style.display = "block";
+      const newAddressInput = document.getElementById("new-address");
+      if (loggedInUserEmail && users[loggedInUserEmail]) {
+        newAddressInput.value = users[loggedInUserEmail].address || '';
+      }
+    }
+
+    function saveNewAddress() {
+      const newAddress = document.getElementById("new-address").value.trim();
+      if (loggedInUserEmail && users[loggedInUserEmail] && newAddress) {
+        users[loggedInUserEmail].address = newAddress;
+        saveUsers();
+        displayProfileDetails();
+        document.getElementById("edit-address-form").style.display = "none";
+        showNotification("Address updated successfully!");
+      } else if (!newAddress) {
+        alert("Address cannot be empty.");
+      }
+    }
+
+    // Initial load logic
+    window.onload = function() {
+        if (loggedInUserEmail && users[loggedInUserEmail]) {
+            openTab(null, "products");
+        } else {
+            openTab(null, "home");
+        }
+        updateNavButtons();
+    };
+  </script>
 </body>
 </html>
